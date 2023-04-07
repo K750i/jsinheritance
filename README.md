@@ -42,7 +42,7 @@ If you understand them completely - you have done, if not - below is a more deta
 * Object property can hold a _value_ or _reference_ to another object or function
 * Functions are also objects, but of special type
 * Any function can be invoked as a constructor, but this doesn't mean it *should* be invoked as a constructor
-* Functions, which are intended to be used as constructors, just called `constructor functions`. Tey have to be invoked with a `new` keyword to construct a new object
+* Functions, which are intended to be used as constructors, just called `constructor functions`. They have to be invoked with the `new` keyword to construct a new object
 * By convention, constructor functions are named with `PascalCase`, all other functions are named with `camelCase`
 * Function in JavaScript is a main force. It can be used as:
   * a function
@@ -100,15 +100,15 @@ Close your eyes and take it as given.
 
 JavaScript authors have named a function, with the name `Object()`. Then, they have made another function in the system, with the name `Function()`. And then, they have made technically every function in the system to be an object.
 
-Of course, this is confusing. But, only for the first time. Then, you get used.
+Of course, this is confusing. But, only for the first time. Then, you get used to it.
 
 Speaker always need to be precisely clear, what he is talking about.
 
-Meanings of term "object":
+Meanings of the term "object":
 * Built-in `Object` constructor
 * Specific JavaScript object, referenced by some access path
 * A `constructor` with its `prototype`
-  * The problem here in the fact, that we have no `classes`, and JavaScript developers often call it `object` but with meaning `type`. Better not to use terms `class`, `type`, `object`, `object type`, but  use only terms `constructor` or `constructor function`
+  * The problem here is the fact, that we have no `classes`, and JavaScript developers often call it `object` but with meaning `type`. Better not to use terms such as `class`, `type`, `object`, `object type`, but rather use terms like `constructor` or `constructor function`
 * JSON object
   * JSON stands for "JavaScript Object Notation"".
   * Typical misuse and misunderstanding is, that JSON is not an object, it is always a `string`, which will become an object in the memory only after parsing
@@ -117,7 +117,7 @@ Meanings of term "object":
   * Its `__proto__` property refers directly to `Object.prototype`, or equal to `null`
   * Can be considered as a Hash
 
-Meanings of term "function":
+Meanings of the term "function":
 * Built-in `Function` constructor
 * Specific named JavaScript function, referenced by name created with `function declaration`
 * Specific anonymous JavaScript function, referenced by some access path
@@ -126,7 +126,7 @@ Meanings of term "function":
 Relation between `Function` and `Object` constructors is very important. It plays major role in JavaScript inheritance.
 
 To summarize:
-* Every function in JS is an object, more exactly - two objects: function itself and its prototype
+* Every function in JS is an object, more specifically - two objects: the function itself and its prototype
 * There are two distinct built-in constructor functions `Function` and `Object` related to each-other
 * `Function.prototype` object itself inherits from `Object.prototype`
 * Every function in the system inherits from `Function.prototype`
@@ -138,14 +138,14 @@ The prototypal inheritance chain is drawn in red.
 
 As you may see `Function` and `Object` are both functions, thus, they both have `prototype` property, which holds  reference to respective `prototype` object.
 
-`Function` and `Object` are both functions, thus their `__proto__` property, refers to `Function.prototype`, which itself has `__proto__` property referencing to `Object.prototype`.
+`Function` and `Object` are both functions, thus their `__proto__` property, refers to `Function.prototype`, which itself has `__proto__` property referencing `Object.prototype`.
 
 Both `prototype` and `__proto__` properties of a `Function` refer to the same `Function.prototype` object, which is a unique situation, valid only for built-in `Function` constructor.
 
 ## "Prototype" term mess
-When one says word "prototype", it immediately starts a real mess in heads of audience. Speaker always need to be precisely clear, what he is talking about.
+When one says the word "prototype", it immediately starts a real mess in the heads of the audience. Speaker always need to be precisely clear, what he is talking about.
 
-Meanings of term "prototype":
+Meanings of the term "prototype":
 * A "prototype" of a given object
   * Its parent
   * Accessible with `someObject.__proto__` property, not `prototype` property
@@ -176,16 +176,16 @@ function foo(){}
 ![alt Function in Javascript](./images/foo.png "Function in Javascript")
 
 What we can see:
-* function declaration creates two objects: `foo` itself and `foo.prototype`, even if `foo` does not going to be used as a constructor
+* function declaration creates two objects: `foo` itself and `foo.prototype`, even if `foo` is not going to be used as a constructor
 * `foo` inherits directly from `Function.prototype`
 * `foo.prototype` inherits from `Object.prototype`
-* this inheritance valid for any, even anonymous or arrow function.
+* this inheritance is valid for any, even anonymous or arrow function.
 
-What we don't see is that `foo` itself has internal `[[Code]]` property, which cannot be accessed but is used when we invoke it with `foo()`.
+What we don't see is that `foo` itself has an internal `[[Code]]` property, which cannot be accessed but is used when we invoke it with `foo()`.
 
 When you use `foo.someMethod()`, all built-in methods come from `Function.prototype` and down the chain from `Object.prototype`. But `foo.someMethod()` never comes from `foo.prototype`. See [Static methods](https://github.com/rus0000/jsinheritance/blob/master/README.md#static-methods).
 
-`foo.prototype` typically does not used at all, if function is not a constructor, and vice versa, is used in the case of a constructor function.
+`foo.prototype` is typically not used at all, if the function is not a constructor, and vice versa, is used in the case of a constructor function.
 
 `foo.prototype` can be set to any other object reference or primitive value. Setting it to a new object or define new properties on it is a common pattern to define a class.
 
